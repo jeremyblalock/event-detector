@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+@import 'results';
+@import 'header';
+@import 'loader';
+
+body {
+  background: $body-bg;
+  color: $body-fg;
+  font-family: $font-family;
+  font-size: 1em;
+}

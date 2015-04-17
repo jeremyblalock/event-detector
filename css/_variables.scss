@@ -1,0 +1,22 @@
+$white: #fff;
+$black: #000;
+$blue: #006eff;
+
+$body-bg: mix($black, $white, 10%);
+$body-fg: mix($black, $white);
+$result-bg: $white;
+$result-fg: $black;
+
+// Fonts
+$font-family: 'Gothan Book', 'Helvetica Neue', sans-serif;
+
+// sizes
+$list-max-width: 620px;
+$submit-btn-width: 180px;
+$form-padding: 30px;
+$wrapper-margin: 40px;
+$grid-item-width: 280px;
+$result-padding: 15px;
+
+// Breakpoints
+$mobile-breakpoint: 2 * $grid-item-width + 4 * $result-padding + 2 * $wrapper-margin;

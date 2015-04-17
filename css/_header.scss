@@ -1,0 +1,80 @@
+.btn {
+  background: $blue;
+  color: $white;
+  padding: 0.5em 1.5em;
+  line-height: 1.4em;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.2s background;
+  outline: none !important;
+  &:hover, &:focus {
+    background: darken($blue, 10%);
+    -webkit-transition-duration: 0.5s;
+  }
+  &:active, &:active:focus {
+    background: darken($blue, 20%);
+    padding-top: 0.55em;
+    padding-bottom: 0.45em;
+    -webkit-transition-duration: 0;
+  }
+  &.disabled {
+    background: mix($black, $white, 40%);
+    pointer-events: none;
+  }
+}
+
+.submission-form {
+  border-bottom: 2px solid mix($black, $white, 20%);
+  .url-input {
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    display: block;
+    padding: 20px $form-padding;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+  @media (min-width: $mobile-breakpoint) {
+    .url-input-wrapper {
+      margin-right: $form-padding + $submit-btn-width;
+    }
+    .url-input {
+      font-size: 1.5em;
+    }
+  }
+  .submit-btn {
+    @extend .btn;
+    font-size: 1.1em;
+    float: right;
+    margin-top: 10px;
+    margin-right: $form-padding;
+    width: $submit-btn-width;
+    display: none;
+    @media (min-width: $mobile-breakpoint) {
+      display: block;
+    }
+  }
+}
+
+.sub-header {
+  padding: 20px $form-padding;
+  .display-toggle {
+    @media (max-width: $mobile-breakpoint - 1px) {
+      display: none;
+    }
+    float: right;
+    a {
+      color: inherit;
+      text-decoration: none;
+      margin: 0 10px;
+      &.active {
+        color: $blue;
+      }
+    }
+  }
+}
+

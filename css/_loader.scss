@@ -1,0 +1,25 @@
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loader-wrapper {
+  position: relative;
+  display: none;
+  .loader {
+    opacity: 0.5;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('../../img/loader.png') no-repeat;
+    background-size: contain;
+    top: 50px;
+    left: 50%;
+    margin-left: -15px;
+    -webkit-animation: spin 0.5s linear infinite;
+  }
+  &.visible {
+    display: block;
+  }
+}

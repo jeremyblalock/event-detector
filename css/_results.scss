@@ -1,0 +1,99 @@
+.wrapper {
+  @media (min-width: $mobile-breakpoint) {
+    margin: $wrapper-margin;
+  }
+}
+
+.results {
+  .result {
+    background: $result-bg;
+    color: $result-fg;
+    display: block;
+    padding: 20px 30px;
+    margin: $result-padding;
+    @include clearfix;
+    border-radius: 5px;
+    .title {
+      font-size: 1.25em;
+      line-height: 1.5em;
+      display: block;
+    }
+    .result-timestamp {
+      font-size: 0.8em;
+    }
+  }
+  &.loading {
+    .result {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin wrapper-list {
+  .results {
+    max-width: $list-max-width;
+    margin: 0 auto;
+    .result-timestamp {
+      text-align: center;
+      width: 5em;
+      float: left;
+      margin: 0 0 0 -1em;
+      span {
+        display: block;
+        &.day {
+          font-size: 2em;
+        }
+      }
+    }
+    .result {
+      .title {
+        margin-left: 80px;
+      }
+    }
+  }
+}
+// List-specific styles
+.wrapper.list {
+  @include wrapper-list;
+}
+
+// Grid-specific styles
+.wrapper.grid {
+  .results {
+    @media (min-width: $mobile-breakpoint) {
+      margin: 0 auto;
+      .result-timestamp {
+        display: block;
+        margin-bottom: 5px;
+        .day {
+          margin-right: 8px;
+          padding-right: 10px;
+          border-right: 1px solid;
+        }
+      }
+
+      .result {
+        width: $grid-item-width;
+        float: left;
+        .title {
+          height: 4.5em;
+          overflow: hidden;
+        }
+      }
+      width: 2 * $grid-item-width + 4 * $result-padding;
+    }
+    @media (min-width: 3 * $grid-item-width + 6 * $result-padding + 2 * $wrapper-margin) {
+      width: 3 * $grid-item-width + 6 * $result-padding;
+    }
+    @media (min-width: 4 * $grid-item-width + 8 * $result-padding + 2 * $wrapper-margin) {
+      width: 4 * $grid-item-width + 8 * $result-padding;
+    }
+  }
+}
+
+// For small screens, just always show list view.
+@media (max-width: $mobile-breakpoint - 1px) {
+  .wrapper {
+    @include wrapper-list;
+  }
+}
