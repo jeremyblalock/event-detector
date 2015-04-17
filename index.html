@@ -19,12 +19,20 @@
           <a href='#' ng-click='setLayout("list")' ng-class='{list: "active"}[layoutClass]'>List</a>
           <a href='#' ng-click='setLayout("grid")' ng-class='{grid: "active"}[layoutClass]'>Grid</a>
         </div>
-        <p><ng-pluralize count='results.length' when='{"0": "No Results",
+        <p><ng-pluralize count='results.length' when='{"0": "",
                                                        "one": "1 result",
                                                        "other": "{} results"}'></ng-pluralize></p>
       </div>
       <div class='loader-wrapper' ng-class='{"true": "visible"}[loading]'>
         <div class='loader'></div>
+      </div>
+      <div class='central-messaging' ng-class='{"landed": "visible"}[state]'>
+        <h2>Hi, there.</h2>
+        <p>Please enter a URL above to begin.</p>
+      </div>
+      <div class='central-messaging' ng-class='{"error": "visible"}[state]'>
+        <h2>No results found.</h2>
+        <p>We did not find any events on the URL you specified.</p>
       </div>
       <ul class='results' ng-class='{"true": "loading"}[loading]'>
         <li ng-repeat='result in results' class='result'>

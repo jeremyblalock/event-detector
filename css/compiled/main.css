@@ -176,6 +176,15 @@ input, button {
   .loader-wrapper.visible {
     display: block; }
 
+.central-messaging {
+  text-align: center;
+  clear: both;
+  font-size: 1.3em;
+  line-height: 2em;
+  display: none; }
+  .central-messaging.visible {
+    display: block; }
+
 body {
   background: #e5e5e5;
   color: #7f7f7f;

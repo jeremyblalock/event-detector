@@ -1,0 +1,10 @@
+.central-messaging {
+  text-align: center;
+  clear: both;
+  font-size: 1.3em;
+  line-height: 2em;
+  display: none;
+  &.visible {
+    display: block;
+  }
+}

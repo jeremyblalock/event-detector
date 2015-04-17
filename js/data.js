@@ -159,7 +159,7 @@ var EventFetcher = function() {
       }
     }
 
-    return pathCounts[bestPath];
+    return pathCounts[bestPath] || [];
   }
 
   // Get the [relative] link to the event, if possible.
@@ -304,14 +304,13 @@ var EventFetcher = function() {
       $.getJSON(fetchURL, function(result) {
         if (result.status.http_code == 200 &&
             result.status.content_type.match(/^text\/html/)) {
-          console.log("Processing...");
           var results = processResults(result.contents);
-          if (callback) callback(results);
+          if (callback && results) callback(results);
+          else errCallback();
         } else {
-          console.log("Error...");
           if (errCallback) errCallback();
         }
-      });
+      }).fail(errCallback);
   }
 
   this.fetch = fetchResults;

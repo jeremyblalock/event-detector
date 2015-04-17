@@ -15,6 +15,7 @@ var app = angular.module('eventsApp', []);
 app.controller('EventsController', function($scope) {
 
   $scope.url = '';
+  $scope.state = 'landed';
   $scope.loading = false;
   $scope.monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July',
                        'Sep', 'Oct', 'Nov', 'Dec'];
@@ -24,10 +25,14 @@ app.controller('EventsController', function($scope) {
   var fetchCallback = function(results) {
     $scope.results = results;
     $scope.loading = false;
+    if (results.length == 0) {
+      $scope.state = 'error';
+    }
     $scope.$apply();
   }
 
   var errCallback = function() {
+    $scope.state = 'error';
     $scope.results = [];
     $scope.loading = false;
     $scope.$apply();
@@ -38,6 +43,7 @@ app.controller('EventsController', function($scope) {
   $scope.results = [];
 
   $scope.submit = function() {
+    $scope.state = 'fetching';
     if ($scope.url) {
       $scope.loading = true;
       eventFetcher.fetch($scope.url, fetchCallback, errCallback);
